@@ -1,0 +1,14 @@
+#cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.card-image {
+  max-width: 75px;
+  padding: 8px;
+}
+
+.container {
+  text-align: center;
+}
