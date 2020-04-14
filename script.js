@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let cardsChosen = [];
   let cardsChosenId = [];
   
-  // Create and push duplicates to cards variable
+  // Create and push duplicates to cards variable (prevent writing duplicates in db.js)
   function createCards () {
     for (let i = 0; i < cardArray.length; i++) {
       cards.push(cardArray[i])
@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         changeCards[cardChosenId].setAttribute('src', 'images/back_cover.png')
       }
     }
+    // When there is a match or no match, the cards chosen arrays are emptied
     cardsChosen = [];
     cardsChosenId = [];
     console.log(`Empty cardsChosen: ${cardsChosen} and empyty cardsChosenId ${cardsChosenId}`);
