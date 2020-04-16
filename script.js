@@ -32,7 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Click event
-  function flipCard () {  
+  function flipCard () { 
+    document.getElementById('alert-choose').style.display = 'none';
+    document.getElementById('alert-match').style.display = 'none';
+    document.getElementById('alert-no-match').style.display = 'none';
+ 
     let back_id = this.getAttribute('id');
     console.log(`Back ID: ${back_id}`);
 
@@ -43,12 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(`Cards Chosen ID: ${cardsChosenId}`);
     console.log(`Cards Chosen: ${cardsChosen}`);
 
-    // If there are 2 cards and thei id's don't match, go to matchCards function. 
+    // If there are 2 cards and their id's don't match, go to matchCards function. 
     if( cardsChosen.length === 2 && cardsChosenId[0] !== cardsChosenId[1]) {
-      setTimeout(matchCards, 500)
+      
+      setTimeout(matchCards, 1000);
+      
       // If the cards chosen have same ID, remove last item from the chosen arrays
     } else if (cardsChosenId[0] === cardsChosenId[1]) {
-      alert('Please choose another card');
+      document.getElementById('alert-choose').style.display = 'block';
       cardsChosen.pop(cards[back_id].name);
       cardsChosenId.pop(back_id)
     }
@@ -58,12 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function matchCards () {
     let changeCards = document.querySelectorAll('img');
     if(cardsChosen[0] === cardsChosen[1]) {
-      alert('You have a match!')
+      document.getElementById('alert-match').style.display = 'block';
+      // If match, make matching cards display: none
       for (const cardChosenId of cardsChosenId) {
-        changeCards[cardChosenId].setAttribute('src', 'images/white.png')
+        // changeCards[cardChosenId].setAttribute('src', 'images/white.png')
+        changeCards[cardChosenId].setAttribute('class', 'disabled')
       }
+
     } else {
-      alert('Sory, you have no match. Try again');
+      document.getElementById('alert-no-match').style.display = 'block';
       for (const cardChosenId of cardsChosenId) {
         console.log('No match cardChosenID: ', cardChosenId);
         
@@ -74,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cardsChosen = [];
     cardsChosenId = [];
     console.log(`Empty cardsChosen: ${cardsChosen} and empyty cardsChosenId ${cardsChosenId}`);
+    
     
   }
 
