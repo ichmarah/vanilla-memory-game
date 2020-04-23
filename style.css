@@ -2,7 +2,9 @@
   display: none;
   color: pink;
   background-color: seagreen;
-
+  padding: 20px;
+  position: absolute;
+  top: 30%;
 }
 
 #cards-grid {
@@ -21,6 +23,7 @@
   margin-left: 10px;
   margin-right: 10px;
   text-align: center;
+  position: relative;
 }
 
 .disabled {
@@ -43,4 +46,8 @@ h3 {
 
 p {
   font-size: 16px;
+}
+
+.unclickable {
+  pointer-events: none;
 }
